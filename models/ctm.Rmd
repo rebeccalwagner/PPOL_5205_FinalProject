@@ -1,0 +1,94 @@
+---
+title: "ctm"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+library(stringr)
+library(stm)
+```
+
+```{r}
+bow_data <- read.csv("../data/processed_text/bigrams_count_11_23.csv")
+text_df <- read.csv("../data/processed_text/text_df_11_23.csv")
+```
+
+```{r}
+head(text_df)
+```
+
+
+
+```{r}
+
+processed <- textProcessor(
+  documents = text_df$bigrams_str,
+  metadata = NULL,
+  lowercase = F,
+  removestopwords = F,
+  removenumbers = F,
+  removepunctuation = F,
+  stem = F,
+  wordLengths = c(1, Inf)
+)
+
+```
+
+```{r}
+
+out <- prepDocuments(processed$documents,
+                     processed$vocab,
+                     processed$meta,
+                     lower.thresh = 0)
+
+docs <- out$documents
+vocab <- out$vocab
+
+```
+
+```{r}
+
+stm_model <- stm(
+  documents = out$documents,
+  vocab     = out$vocab,
+  K         = 15,
+  max.em.its = 75,
+  init.type = "Spectral"
+)
+
+```
+
+```{r}
+labelTopics(stm_model)
+```
+
+```{r}
+plot(stm_model)
+```
+```{r}
+findThoughts(stm_model, texts = text_df$bigrams_str, topics = 7, n = 5)
+```
+
+```{r}
+topic_cors <- topicCorr(stm_model)
+```
+
+```{r}
+plot(topic_cors, cutoff = 0.01)  
+```
+```{r}
+
+cor_matrix <- topic_cors$cor
+
+cor_pairs <- which(abs(cor_matrix) > 0.01, arr.ind = TRUE)
+data.frame(
+  Topic1 = cor_pairs[,1],
+  Topic2 = cor_pairs[,2],
+  Correlation = cor_matrix[cor_pairs]
+)
+
+```
+
+
+
