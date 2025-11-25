@@ -9,6 +9,8 @@ title: LDA Model Showcase
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
+### Exploring Latent Dirichlet Allocation and Correlated Topic Modeling through Congressional Legislation
+Rebecca Wagner
 
 In this project, I explore two topic modeling techniques on a corpus of congressional bills. First, I implement a traditional Latent Dirichlet Allocation model, and second, a Correlated Topic Model. I compare and contrast both methods through their results. 
 
@@ -18,13 +20,13 @@ Topic modeling is a natural language technique that assigns “topics” to docu
 
 In LDA, Documents are represented as a random mixture of topics, and topics are characterized by a distribution over words. There are 3 steps for generating each document:
 
-1. Choose the length of the document as the number of words $N \sim \text{Poisson}$
+1. Choose the length of the document as the number of words \(N \sim \text{Poisson}\)
 
-2. Choose the mix of topics $\theta \sim \text{Dir}(\alpha)$ where \(\alpha\) controls how “mixed” or “pure” the document topics are.
+2. Choose the mix of topics \(\theta \sim \text{Dir}(\alpha)\)  where \(\alpha\) controls how “mixed” or “pure” the document topics are.
 
-3. For all N words: 
-Choose which topic generates the word $Z_n \sim \text{Multinomial}(\theta)$
-Then choose the specific word from that topic $ (w | x, \beta)$ where \(\beta\) controls the relationships between words and topics
+3. For all \(N\) words: 
+Choose which topic generates the word \(Z_n \sim \text{Multinomial}(\theta)\)
+Then choose the specific word from that topic \((w \mid x, \beta)\) where \(\beta\) controls the relationships between words and topics
 
 <figure style="text-align: center;">
   <img src="assets/LDA.gif" style="width: 100%; max-width: 800px;" alt="LDA Animation">
