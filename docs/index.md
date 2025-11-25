@@ -32,4 +32,4 @@ I applied standard preprocessing including a custom set of stop words (such as a
 
 With some consideration and parameter tuning, I settled on 24 topics across the corpus. The LDA model was implemented using the `Gensim` python library, with both the alpha and beta parameters set to `auto`. This feature of the gensim library allows the LDA model to learn an asymetric prior from the corpus itself. 
 
-<iframe src="assets/lda_vis.html" width="100%" height="600px"></iframe>
+<iframe src="assets/lda_vis.html" width="100%" height="2000px"></iframe>
