@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    
+    <title>My One-Page Site</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            scroll-behavior: smooth;
+            text-align: left;
+        }
+
+        /* Page Header */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: #333;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 40px;
+        }
+
+        .subheader {
+            margin: 10px 0 20px;
+            font-size: 22px;
+            font-weight: normal;
+            color: #dddddd;
+        }
+
+        /* Navigation under title */
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #ffebcd;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 20px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        section {
+            padding: 10px 20px;
+        }
+        
+         /* Add spacing between list items */
+        ol li, ul li {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    
+        /* space above/below math lines */
+        .math {
+            margin: 8px 8px;
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER WITH TITLE + NAV -->
+    <header>
+        <h1>Exploring Latent Dirichlet Allocation and Correlated Topic Modeling through Congressional Legislation</h1>
+        <h2 class="subheader">Rebecca Wagner<br>PPOL 5205</h2>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#LDA">A Refresher on LDA</a>
+            <a href="#LDAApplication">Applying LDA</a>
+        </nav>
+
+    </header>
+
+    <!-- SECTIONS -->
+    <section id="home">
+        <h2></h2>
+        <p> In this project, I explore two topic modeling techniques on a corpus of congressional bills. First, I implement a traditional Latent Dirichlet Allocation model, and second, a Correlated Topic Model. I compare and contrast both methods through their results.
+        </p>
+    </section>
+
+    <section id="LDA">
+    <h2>A Refresher on Latent Dirichlet Allocation</h2>
+
+    <p>
+        Topic modeling is a natural language technique that assigns “topics” to documents in a corpus
+        by assessing how words appear together across documents. Latent Dirichlet Allocation (LDA) is
+        a common implementation of topic modeling that is unsupervised, generative, and probabilistic.
+        In other words, it assesses the probability of patterns in a corpus and generates new examples
+        of these patterns.
+    </p>
+
+    <p>
+        In LDA, documents are represented as a random mixture of topics, and topics are characterized
+        by a distribution over words. There are 3 steps for generating each document:
+    </p>
+
+    <ol>
+        <li>
+            Choose the length of the document as the number of words:
+            <div class="math">
+                \( N \sim \text{Poisson}(\lambda) \)
+            </div>
+        </li>
+    
+        <li>
+            Choose the mix of topics:
+            <div class="math">
+                \( \theta \sim \text{Dirichlet}(\alpha) \)
+            </div>
+            where \( \alpha \) controls how “mixed” or “pure” the document topics are.
+        </li>
+    
+        <li>
+            For all \( N \) words:
+            <ul>
+                <li>
+                    Choose which topic generates the word:
+                    <div class="math">
+                        \( Z_n \sim \text{Multinomial}(\theta) \)
+                    </div>
+                </li>
+        
+                <li>
+                    Then choose the specific word from that topic:
+                    <div class="math">
+                        \( w \mid z, \beta \)
+                    </div>
+                    where \( \beta \) controls word–topic relationships.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    
+    <figure style="text-align: center;">
+    <img src="assets/LDA.gif" style="width: 100%; max-width: 800px;" alt="LDA Animation">
+    <figcaption>LDA Document Generation Process</figcaption>
+    </figure>
+</section>
+
+<section id="LDAApplication">
+        <h2>Applying LDA to Congressional Legislation</h2>
+        <p> I collected a corpus of 1,657 pieces of legislation from both the House of Representatives and Senate that are tagged with “Housing and Community Development”. These contain any bill introduced in either chamber across all stages of the legislative process.
+        </p>
+
+        <p> I applied standard preprocessing including a custom set of stop words (such as ammend, subsection, paragraph) and lematization. I also created bigrams within documents such as “Fannie Mae” and “census tract”.
+        </p>
+
+        <p> With some consideration and parameter tuning, I settled on 24 topics across the corpus. The LDA model was implemented using the Gensim python library, with both the alpha and beta parameters set to auto. This feature of the gensim library allows the LDA model to learn an asymetric prior from the corpus itself.
+        </p>
+        
+        <iframe src="assets/lda_vis.html" width="110%" height="1500px"></iframe>
+
+    </section>
+
+
+
+</body>
+
+</html>
