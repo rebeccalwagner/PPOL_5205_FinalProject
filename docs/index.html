@@ -340,7 +340,7 @@
     </div>
 
     <div class="iframe-container">
-        <iframe src="assets/lda_vis.html" width="100%" height="880px"></iframe>
+        <iframe src="assets/lda_vis.html" width="110%" height="880px"></iframe>
     </div>
 
     <div class="container">
@@ -358,12 +358,63 @@
             </p>
 
             <p>
-                <strong>Correlated Topic Modeling (CTM)</strong> is a variation on LDA that addresses this limitation. Instead of a Dirichlet distribution, CTM draws topic proportions from a logistic normal distribution with parameters \( \mu \) and \( \Sigma \). The generation process is otherwise identical to traditional LDA.
+                <strong>Correlated Topic Modeling (CTM)</strong> is a variation on LDA that addresses this limitation. Instead of a Dirichlet distribution, CTM draws topic proportions from a logistic normal distribution with parameters \( \mu \) and \( \Sigma \). Aside from a step to ensure all proportions sum to 1, the generation process is otherwise identical to traditional LDA:
             </p>
 
+            <ol>
+                <li>
+                    Choose the length of the document:
+                    <div class="math">
+                        \( N \sim \text{Poisson} \)
+                    </div>
+                    where \( N \) is the number of words.
+                </li>
+
+                <li>
+                    Draw latent topic proportions from a multivariate normal:
+                    <div class="math">
+                        \( \eta \sim \mathcal{N}(\mu, \Sigma) \)
+                    </div>
+                    where \( \mu \) is the mean vector and \( \Sigma \) is the covariance matrix that captures topic correlations.
+                </li>
+
+                <li>
+                    Transform to the simplex (so proportions sum to 1):
+                    <div class="math">
+                        \( \theta_k = \frac{\exp(\eta_k)}{\sum_{j=1}^{K} \exp(\eta_j)} \)
+                    </div>
+                    where \( \theta \) is the final topic proportion vector.
+                </li>
+
+                <li>
+                    For all \( N \) words:
+                    <ul>
+                        <li>
+                            Choose which topic generates the word:
+                            <div class="math">
+                                \( Z_n \sim \text{Multinomial}(\theta) \)
+                            </div>
+                        </li>
+                
+                        <li>
+                            Then choose the specific word from that topic:
+                            <div class="math">
+                                \( w \mid z, \beta \)
+                            </div>
+                            where \( \beta \) controls word–topic relationships.
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+
             <p>
-                Notably, the \( \Sigma \) parameter is a covariance matrix and <em>allows for correlations between topics</em>. It also allows us to analyze these correlations.
+                Notably, the \( \Sigma \) parameter is a covariance matrix and <em>allows for correlations between topics</em>.
             </p>
+
+            <figure>
+                <img src="assets/CTM.gif" alt="CTM Animation">
+                <figcaption>CTM Document Generation Process</figcaption>
+            </figure>
         </section>
 
         <section id="CTMApplication">
@@ -474,7 +525,7 @@
             </p>
 
             <p>
-                Further analysis on this corpus using metadata may reveal how these patterns relate to legislative outcomes—what bills perform well, who they are sponsored by, and what other characteristics they might have.
+                Further analysis on this corpus using metadata may reveal how these patterns relate to legislative outcomes—what bills perform well, who they are sponsored by, and what other characteristics they might have. 
             </p>
         </section>
     </div>
