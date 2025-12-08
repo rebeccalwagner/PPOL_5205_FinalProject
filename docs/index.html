@@ -169,11 +169,93 @@
             <p> I applied standard preprocessing including a custom set of stop words (such as ammend, subsection, paragraph) and lematization. I also created bigrams within documents such as “Fannie Mae” and “census tract” in an effort to maintain some context.
             </p>
 
-            <p> With some consideration and parameter tuning, I settled on 24 topics across the corpus—this value resulted in the highest coherence, and reasonable perplexity. The LDA model was implemented using the Gensim python library, with both the alpha and beta parameters set to auto. This feature of the gensim library allows the LDA model to learn an asymetric prior from the corpus itself.
+            <p> The LDA model was implemented using the Gensim python library, with both the alpha and beta parameters set to auto. This feature of the gensim library allows the LDA model to learn an asymetric prior from the corpus itself. With some consideration and parameter tuning, I settled on 10 topics across the corpus—this value resulted in a reasonable balance of coherance and perplexity. These 10 topics are described in Table 1 and the following interactive. 
             </p>
 
-            <p> The following interactive displays these 24 topics and allows you to explore the relationships between them. 
-            </p>
+            <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; margin:0 auto;">
+            <caption style="caption-side:top; font-weight:bold; padding:8px;">Table 1. LDA Topic Descriptions</caption>
+            <thead>
+                <tr>
+                <th>Topic</th>
+                <th>Themes</th>
+                <th>Common Words</th>
+                <th>Distinctive Words</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                <td>1</td>
+                <td>Mortgages, Foreclosure, & Loan Oversight</td>
+                <td>mortgage, loan, foreclosure, servicer</td>
+                <td>refinanced, status, oversight</td>
+                </tr>
+
+                <tr>
+                <td>2</td>
+                <td>Housing Assistance & Vulnerable Populations</td>
+                <td>housing, assistance, program</td>
+                <td>domestic_violence, survivor</td>
+                </tr>
+
+                <tr>
+                <td>3</td>
+                <td>Neighborhood Development</td>
+                <td>public, neighborhood, project</td>
+                <td>transformation, recreation, revitalized/td>
+                </tr>
+
+                <tr>
+                <td>4</td>
+                <td>Disaster Response</td>
+                <td>Assistance, disaster, property</td>
+                <td>impacted_distressed, robert_stafford, major_disaster</td>
+                </tr>
+
+                <tr>
+                <td>5</td>
+                <td>Homelessness</td>
+                <td>service, homeless, program</td>
+                <td>homelessness, unhoused, child</td>
+                </tr>
+
+                <tr>
+                <td>6</td>
+                <td>Grants & Hazards</td>
+                <td>public, development, grant</td>
+                <td>comprehensive_regional, mold, paint_hazard</td>
+                </tr>
+
+                <tr>
+                <td>7</td>
+                <td>Community Development</td>
+                <td>public, agency, project, grant</td>
+                <td>transportation, revitalization, recreation, rehabilitation</td>
+                </tr>
+
+                <tr>
+                <td>8</td>
+                <td>Housing Finance Regulation (GSE/FHFA Oversight)</td>
+                <td>federal, director, agency, regulated</td>
+                <td>conservator_receiver, oversight</td>
+                </tr>
+
+                <tr>
+                <td>9</td>
+                <td>State & Local Gov</td>
+                <td>state, local, community</td>
+                <td>lead, jurisdiction, zoning_framework</td>
+                </tr>
+
+                <tr>
+                <td>10</td>
+                <td>Tenant/Landlord Relations </td>
+                <td>proceeding, amount, condition</td>
+                <td>counsel_legislation, upcs_inspection</td>
+                </tr>
+
+            </tbody>
+            </table>
 
             <p>
                 <strong>
@@ -199,6 +281,11 @@
             <iframe src="assets/lda_vis.html" width="100%" height="880px"></iframe>
         </section>
 
+    <p> Notably, sevearl of these topics are thematically similar and visually overlapping. For example, topics 1 and 8 both have to do with federal oversight, while topics 2, 9, and 10 all seem to address housing assistnace. However, we have no way of characterizing the relationships between topics outside of the principal component analysis. Correlated Topic Modeling can help bridge this gap.
+            </p>
+
+
+
     <div class="container"></div>
         <section id="CTM"></section>
             <h2>An Introduction to Correlated Topic Modeling</h2>
@@ -216,11 +303,100 @@
             </p>
 
             <p>
-                Notably, the\ ( \Sigma \) parameter is a covariance matrix and 
-                <em>allows for correlations between topics</em>.
+                Notably, the \( \Sigma \) parameter is a covariance matrix and 
+                <em>allows for correlations between topics</em>. It also allows us to analyze these correlations. 
             </p>
-        </section
+
+            
+        </section>
+
+        <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; margin:0 auto;">
+            <caption style="caption-side:top; font-weight:bold; padding:8px;">Table 2. R Topic Model Descriptions</caption>
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Themes</th>
+                    <th>Common Words</th>
+                    <th>Distinctive Words</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>Homelessness & Housing Assistance Systems</td>
+                    <td>housing, assistance, program, homeless</td>
+                    <td>collaborative_applicant, mckinney_vento, continuum_care</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Congressional Actions & Social Protection Issues</td>
+                    <td>housing, state, fair, congress, development</td>
+                    <td>sex_trafficking, congressional_bill, daca_recipient</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Eviction, Disaster Relief, & Tenant Protections</td>
+                    <td>state, assistance, housing, fund, tenant</td>
+                    <td>illegal_eviction, court_ordered, major_disaster</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Community Grants & Recreation Investments</td>
+                    <td>grant, community, program, development</td>
+                    <td>park_recreation, recreation, comprehensive_regional</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Lead Hazards & Healthy Housing</td>
+                    <td>housing, lead, health, program, property</td>
+                    <td>pipe_hazard, hazard, cdbg_plus</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Housing Safety Standards & Inspections</td>
+                    <td>housing, unit, dwelling, assistance</td>
+                    <td>temperature_sensor, qualifying_smoke, zoning_framework</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>Tax Credits, Income Rules, & Affordable Housing Finance</td>
+                    <td>housing, year, income, project, credit</td>
+                    <td>taxable, taxpayer, first_responder</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>Mortgage & GSE/FHFA Oversight</td>
+                    <td>mortgage, federal, housing, enterprise</td>
+                    <td>ginnie_mae, fhfa, conservator_receiver</td>
+                </tr>
+
+                <tr>
+                    <td>9</td>
+                    <td>Foreclosure & Loss Mitigation</td>
+                    <td>mortgage, loan, foreclosure, borrower</td>
+                    <td>servicer, forbearance, loss_mitigation</td>
+                </tr>
+
+                <tr>
+                    <td>10</td>
+                    <td>Public Housing Transformation & Resident Support</td>
+                    <td>housing, public, unit, assistance, resident</td>
+                    <td>transformation, demolition_disposition, self_sufficiency</td>
+                </tr>
+
+            </tbody>
+        </table>
+
     
+        <iframe src="assets/ldavis_output/index.html" width="100%" height="880px"></iframe>
 
     </div>
     
