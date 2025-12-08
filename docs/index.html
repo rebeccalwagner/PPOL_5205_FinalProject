@@ -5,47 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-    
-    <title>My One-Page Site</title>
+    <title>PPOL 5205 Showcase</title>
 
     <style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
             scroll-behavior: smooth;
-            text-align: left;
+            line-height: 1.6;
         }
 
         /* Page Header */
         header {
             text-align: center;
             padding: 40px 20px 20px;
-            background: #333;
+            background: #6797c5;
             color: white;
         }
 
         header h1 {
             margin: 0;
-            font-size: 40px;
+            font-size: 30px;
         }
 
         .subheader {
             margin: 10px 0 20px;
-            font-size: 22px;
+            font-size: 16px;
             font-weight: normal;
-            color: #dddddd;
+            color: #ffffff;
         }
 
-        /* Navigation under title */
         nav {
             margin-top: 20px;
         }
 
         nav a {
-            color: #ffebcd;
+            color: #2a5883;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 14px;
             font-size: 20px;
         }
 
@@ -54,50 +51,132 @@
         }
 
         .container {
-            max-width: 800px;      /* or whatever width you want */
-            margin: 0 auto;         /* centers the container horizontally */
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* Sections */
         section {
-            padding: 10px 20px;
+            padding: 40px 0;
+        }
+
+        section h2 {
+            color: #2a5883;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            margin-bottom: 15px;
         }
         
-         /* Add spacing between list items */
+        /* List spacing */
         ol li, ul li {
-            margin-bottom: 10px;
-            margin-top: 10px;
+            margin-bottom: 12px;
+            margin-top: 12px;
         }
     
-        /* space above/below math lines */
+        /* Math equations */
         .math {
-            margin: 8px 8px;
+            margin: 12px 0;
             display: block;
             text-align: center;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table caption {
+            caption-side: top;
+            font-weight: bold;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        table th {
+            background-color: #6797c5;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Images and figures */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+
+        figure {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        figcaption {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* iframe container */
+        .iframe-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        iframe {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Emphasis boxes */
+        .emphasis-box {
+            background-color: #f0f7ff;
+            border-left: 4px solid #6797c5;
+            padding: 15px 20px;
+            margin: 20px 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="container"></div>
-        <!-- HEADER WITH TITLE + NAV -->
-        <header>
-            <h1>Exploring Latent Dirichlet Allocation and Correlated Topic Modeling through Congressional Legislation</h1>
-            <h2 class="subheader">Rebecca Wagner<br>PPOL 5205</h2>
+    <!-- HEADER WITH TITLE + NAV -->
+    <header>
+        <h1>Exploring Latent Dirichlet Allocation and Correlated Topic Modeling through Congressional Legislation</h1>
+        <h2 class="subheader">Rebecca Wagner<br>PPOL 5205</h2>
 
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#LDA">A Refresher on LDA</a>
-                <a href="#LDAApplication">Applying LDA</a>
-                <a href="#CTM">An Introduction to CTM</a>
-            </nav>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#LDA">LDA Refresher</a>
+            <a href="#LDAApplication">Applying LDA</a>
+            <a href="#CTM">Introduction to CTM</a>
+            <a href="#CTMApplication">Applying CTM</a>
+            <a href="#Comparison">Comparison</a>
+        </nav>
+    </header>
 
-        </header>
-
+    <div class="container">
         <!-- SECTIONS -->
         <section id="home">
-            <h2></h2>
-            <p> In this project, I explore two topic modeling techniques on a corpus of congressional bills. First, I implement a traditional Latent Dirichlet Allocation model, and second, a Correlated Topic Model. I compare and contrast both methods through their results.
+            <h2>Overview</h2>
+            <p>
+                In this project, I explore two topic modeling techniques on a corpus of congressional bills. First, I implement a traditional Latent Dirichlet Allocation model, and second, a Correlated Topic Model. I compare and contrast both methods through their results.
             </p>
         </section>
 
@@ -105,11 +184,11 @@
             <h2>A Refresher on Latent Dirichlet Allocation</h2>
 
             <p>
-                Topic modeling is a text analysis technique that assigns “topics” to documents by modeling patterns of words across the corpus. Latent Dirichlet Allocation (LDA) is a common implementation of topic modeling that is unsupervised, generative, and probabilistic. In other words, it does not have predefined outcomes, but "generates" the probability of identified patterns occuring. 
+                Topic modeling is a text analysis technique that assigns "topics" to documents by modeling patterns of words across the corpus. Latent Dirichlet Allocation (LDA) is a common implementation of topic modeling that is unsupervised, generative, and probabilistic. In other words, it does not have predefined outcomes, but "generates" the probability of identified patterns occurring.
             </p>
 
             <p>
-                "Generates", here, is in quotation because the model does not <em>actually</em> create new documents. Rather, it assumes that documents are created according to an algorithm and attempts to reverse engineer this algorithm. The algorithm has 3 steps for generating each document:
+                "Generates," here, is in quotation marks because the model does not <em>actually</em> create new documents. Rather, it assumes that documents are created according to an algorithm and attempts to reverse engineer this algorithm. The algorithm has 3 steps for generating each document:
             </p>
 
             <ol>
@@ -126,7 +205,7 @@
                     <div class="math">
                         \( \theta \sim \text{Dirichlet}(\alpha) \)
                     </div>
-                    where \( \alpha \) controls how “mixed” or “pure” the document topics are.
+                    where \( \alpha \) controls how "mixed" or "pure" the document topics are.
                 </li>
             
                 <li>
@@ -151,255 +230,254 @@
             </ol>
 
             <p>
-                Once this document generation reverse-engineering is complete, the LDA model can assign topic probabilites to each document and word probabilities to each topic, allowing us to analyze the underlying thematic structure of the corpus.
+                Once this document generation reverse-engineering is complete, the LDA model can assign topic probabilities to each document and word probabilities to each topic, allowing us to analyze the underlying thematic structure of the corpus.
             </p>
         
-            <figure style="text-align: center;">
-            <img src="assets/LDA.gif" style="width: 100%; max-width: 800px;" alt="LDA Animation">
-            <figcaption>LDA Document Generation Process</figcaption>
+            <figure>
+                <img src="assets/LDA.gif" alt="LDA Animation">
+                <figcaption>LDA Document Generation Process</figcaption>
             </figure>
-        
         </section>
 
         <section id="LDAApplication">
             <h2>Applying LDA to Congressional Legislation</h2>
-            <p> I collected a corpus of 1,657 pieces of legislation from both the House of Representatives and Senate that are tagged with “Housing and Community Development”. These contain any bill introduced in either chamber across all stages of the legislative process.
+            
+            <p>
+                I collected a corpus of 1,657 pieces of legislation from both the House of Representatives and Senate that are tagged with "Housing and Community Development". These contain any bill introduced in either chamber across all stages of the legislative process.
             </p>
 
-            <p> I applied standard preprocessing including a custom set of stop words (such as ammend, subsection, paragraph) and lematization. I also created bigrams within documents such as “Fannie Mae” and “census tract” in an effort to maintain some context.
+            <p>
+                I applied standard preprocessing including a custom set of stop words (such as amend, subsection, paragraph) and lemmatization. I also created bigrams within documents such as "Fannie Mae" and "census tract" in an effort to maintain some context.
             </p>
 
-            <p> The LDA model was implemented using the Gensim python library, with both the alpha and beta parameters set to auto. This feature of the gensim library allows the LDA model to learn an asymetric prior from the corpus itself. With some consideration and parameter tuning, I settled on 10 topics across the corpus—this value resulted in a reasonable balance of coherance and perplexity. These 10 topics are described in Table 1 and the following interactive. 
+            <p>
+                The LDA model was implemented using the Gensim Python library, with both the alpha and beta parameters set to auto. This feature of the Gensim library allows the LDA model to learn an asymmetric prior from the corpus itself. With some consideration and parameter tuning, I settled on 10 topics across the corpus—this value resulted in a reasonable balance of coherence and perplexity. These 10 topics are described in Table 1 and the following interactive.
             </p>
 
-            <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; margin:0 auto;">
-            <caption style="caption-side:top; font-weight:bold; padding:8px;">Table 1. LDA Topic Descriptions</caption>
-            <thead>
-                <tr>
-                <th>Topic</th>
-                <th>Themes</th>
-                <th>Common Words</th>
-                <th>Distinctive Words</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr>
-                <td>1</td>
-                <td>Mortgages, Foreclosure, & Loan Oversight</td>
-                <td>mortgage, loan, foreclosure, servicer</td>
-                <td>refinanced, status, oversight</td>
-                </tr>
-
-                <tr>
-                <td>2</td>
-                <td>Housing Assistance & Vulnerable Populations</td>
-                <td>housing, assistance, program</td>
-                <td>domestic_violence, survivor</td>
-                </tr>
-
-                <tr>
-                <td>3</td>
-                <td>Neighborhood Development</td>
-                <td>public, neighborhood, project</td>
-                <td>transformation, recreation, revitalized/td>
-                </tr>
-
-                <tr>
-                <td>4</td>
-                <td>Disaster Response</td>
-                <td>Assistance, disaster, property</td>
-                <td>impacted_distressed, robert_stafford, major_disaster</td>
-                </tr>
-
-                <tr>
-                <td>5</td>
-                <td>Homelessness</td>
-                <td>service, homeless, program</td>
-                <td>homelessness, unhoused, child</td>
-                </tr>
-
-                <tr>
-                <td>6</td>
-                <td>Grants & Hazards</td>
-                <td>public, development, grant</td>
-                <td>comprehensive_regional, mold, paint_hazard</td>
-                </tr>
-
-                <tr>
-                <td>7</td>
-                <td>Community Development</td>
-                <td>public, agency, project, grant</td>
-                <td>transportation, revitalization, recreation, rehabilitation</td>
-                </tr>
-
-                <tr>
-                <td>8</td>
-                <td>Housing Finance Regulation (GSE/FHFA Oversight)</td>
-                <td>federal, director, agency, regulated</td>
-                <td>conservator_receiver, oversight</td>
-                </tr>
-
-                <tr>
-                <td>9</td>
-                <td>State & Local Gov</td>
-                <td>state, local, community</td>
-                <td>lead, jurisdiction, zoning_framework</td>
-                </tr>
-
-                <tr>
-                <td>10</td>
-                <td>Tenant/Landlord Relations </td>
-                <td>proceeding, amount, condition</td>
-                <td>counsel_legislation, upcs_inspection</td>
-                </tr>
-
-            </tbody>
+            <table>
+                <caption>Table 1. LDA Topic Descriptions</caption>
+                <thead>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Themes</th>
+                        <th>Common Words</th>
+                        <th>Distinctive Words</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mortgages, Foreclosure, & Loan Oversight</td>
+                        <td>mortgage, loan, foreclosure, servicer</td>
+                        <td>refinanced, status, oversight</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Housing Assistance & Vulnerable Populations</td>
+                        <td>housing, assistance, program</td>
+                        <td>domestic_violence, survivor</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Neighborhood Development</td>
+                        <td>public, neighborhood, project</td>
+                        <td>transformation, recreation, revitalized</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Disaster Response</td>
+                        <td>assistance, disaster, property</td>
+                        <td>impacted_distressed, robert_stafford, major_disaster</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Homelessness</td>
+                        <td>service, homeless, program</td>
+                        <td>homelessness, unhoused, child</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Grants & Hazards</td>
+                        <td>public, development, grant</td>
+                        <td>comprehensive_regional, mold, paint_hazard</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Community Development</td>
+                        <td>public, agency, project, grant</td>
+                        <td>transportation, revitalization, recreation, rehabilitation</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Housing Finance Regulation (GSE/FHFA Oversight)</td>
+                        <td>federal, director, agency, regulated</td>
+                        <td>conservator_receiver, oversight</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>State & Local Gov</td>
+                        <td>state, local, community</td>
+                        <td>lead, jurisdiction, zoning_framework</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Tenant/Landlord Relations</td>
+                        <td>proceeding, amount, condition</td>
+                        <td>counsel_legislation, upcs_inspection</td>
+                    </tr>
+                </tbody>
             </table>
 
-            <p>
-                <strong>
-            How you can explore this model:
-            </strong>
-            <ul>
-                <li>
-                    <strong>Click on a circle to select that topic.</strong> The size of each circle corresponds to the prevalence of that topic in the corpus, while the distance between circles indicates the similarity between topics.
-                </li>
-                <li>
-                    <strong>Adjust the term relevancy score \(\lambda\).</strong> Lower values show terms that are rare but exclusive to a topic, while higher ones show terms that are more frequent across all topics.
-                </li>
-                <li>
-                    <strong>Hover over a term to see its prevalence across topics.</strong> 
-                </li>
-            </ul>
-            </p>
-            
+            <div class="emphasis-box">
+                <strong>How you can explore this model:</strong>
+                <ul>
+                    <li><strong>Click on a circle to select that topic.</strong> The size of each circle corresponds to the prevalence of that topic in the corpus, while the distance between circles indicates the similarity between topics.</li>
+                    <li><strong>Adjust the term relevancy score \(\lambda\).</strong> Lower values show terms that are rare but exclusive to a topic, while higher ones show terms that are more frequent across all topics.</li>
+                    <li><strong>Hover over a term to see its prevalence across topics.</strong></li>
+                </ul>
+            </div>
         </section>
     </div>
 
+    <div class="iframe-container">
+        <iframe src="assets/lda_vis.html" width="100%" height="880px"></iframe>
+    </div>
+
+    <div class="container">
         <section>
-            <iframe src="assets/lda_vis.html" width="100%" height="880px"></iframe>
+            <p>
+                Notably, several of these topics are thematically similar and visually overlapping. For example, topics 1 and 8 both have to do with federal oversight, while topics 2, 9, and 10 all seem to address housing assistance. However, we have no way of characterizing the relationships between topics outside of the principal component analysis. Correlated Topic Modeling can help bridge this gap.
+            </p>
         </section>
 
-    <p> Notably, sevearl of these topics are thematically similar and visually overlapping. For example, topics 1 and 8 both have to do with federal oversight, while topics 2, 9, and 10 all seem to address housing assistnace. However, we have no way of characterizing the relationships between topics outside of the principal component analysis. Correlated Topic Modeling can help bridge this gap.
-            </p>
-
-
-
-    <div class="container"></div>
-        <section id="CTM"></section>
+        <section id="CTM">
             <h2>An Introduction to Correlated Topic Modeling</h2>
-            <p>
-                While LDA generates a mixture of topics, it does not generate correlations between these topics. 
-                In many real-world applications, topics are unlikely to be completely independent of each other. 
-                This limitation stems from the use of the Dirichlet distribution to generate topic mixtures.
-            </p>
-
-            <p>
-                <strong>Correlated Topic Modeling (CTM)</strong> is a variation on LDA that addresses this limitation. 
-                Instead of a Dirichlet distribution, CTM draws topic proportions from a logistic normal distribution 
-                with parameters \( \mu \) and \( \Sigma \). 
-                The generation process is otherwise identical to traditional LDA.
-            </p>
-
-            <p>
-                Notably, the \( \Sigma \) parameter is a covariance matrix and 
-                <em>allows for correlations between topics</em>. It also allows us to analyze these correlations. 
-            </p>
-
             
+            <p>
+                While LDA generates a mixture of topics, it does not generate correlations between these topics. In many real-world applications, topics are unlikely to be completely independent of each other. This limitation stems from the use of the Dirichlet distribution to generate topic mixtures.
+            </p>
+
+            <p>
+                <strong>Correlated Topic Modeling (CTM)</strong> is a variation on LDA that addresses this limitation. Instead of a Dirichlet distribution, CTM draws topic proportions from a logistic normal distribution with parameters \( \mu \) and \( \Sigma \). The generation process is otherwise identical to traditional LDA.
+            </p>
+
+            <p>
+                Notably, the \( \Sigma \) parameter is a covariance matrix and <em>allows for correlations between topics</em>. It also allows us to analyze these correlations.
+            </p>
         </section>
 
-        <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse; margin:0 auto;">
-            <caption style="caption-side:top; font-weight:bold; padding:8px;">Table 2. R Topic Model Descriptions</caption>
-            <thead>
-                <tr>
-                    <th>Topic</th>
-                    <th>Themes</th>
-                    <th>Common Words</th>
-                    <th>Distinctive Words</th>
-                </tr>
-            </thead>
-            <tbody>
+        <section id="CTMApplication">
+            <h2>Applying CTM to Congressional Legislation</h2>
 
-                <tr>
-                    <td>1</td>
-                    <td>Homelessness & Housing Assistance Systems</td>
-                    <td>housing, assistance, program, homeless</td>
-                    <td>collaborative_applicant, mckinney_vento, continuum_care</td>
-                </tr>
+            <p>
+                I implemented a CTM model using the stm R library, using the same dataset and parameters. While subtle differences between the models are unavoidable due to randomness, essentially the same topic clusters emerged (though with different numeric labels). Topics are described in Table 2, and correlations are displayed in Figure 1.
+            </p>
 
-                <tr>
-                    <td>2</td>
-                    <td>Congressional Actions & Social Protection Issues</td>
-                    <td>housing, state, fair, congress, development</td>
-                    <td>sex_trafficking, congressional_bill, daca_recipient</td>
-                </tr>
+            <table>
+                <caption>Table 2. Correlated Topic Model Descriptions</caption>
+                <thead>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Themes</th>
+                        <th>Common Words</th>
+                        <th>Distinctive Words</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Homelessness</td>
+                        <td>housing, assistance, program, homeless</td>
+                        <td>collaborative_applicant, mckinney_vento, continuum_care</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Housing Assistance & Vulnerable Populations</td>
+                        <td>housing, state, fair, congress, development</td>
+                        <td>sex_trafficking, congressional_bill, daca_recipient</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Disaster Relief & Tenant Protections</td>
+                        <td>state, assistance, housing, fund, tenant</td>
+                        <td>illegal_eviction, court_ordered, major_disaster</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Community Development</td>
+                        <td>grant, community, program, development</td>
+                        <td>park_recreation, recreation, comprehensive_regional</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Lead Hazards & Healthy Housing</td>
+                        <td>housing, lead, health, program, property</td>
+                        <td>pipe_hazard, hazard, cdbg_plus</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Housing Safety Standards & Inspections</td>
+                        <td>housing, unit, dwelling, assistance</td>
+                        <td>temperature_sensor, qualifying_smoke, zoning_framework</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Tax Credits, Income Rules, & Affordable Housing Finance</td>
+                        <td>housing, year, income, project, credit</td>
+                        <td>taxable, taxpayer, first_responder</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Housing Finance Regulation (GSE/FHFA Oversight)</td>
+                        <td>mortgage, federal, housing, enterprise</td>
+                        <td>ginnie_mae, fhfa, conservator_receiver</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Mortgages, Foreclosure, & Loan Oversight</td>
+                        <td>mortgage, loan, foreclosure, borrower</td>
+                        <td>servicer, forbearance, loss_mitigation</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Neighborhood Development</td>
+                        <td>housing, public, unit, assistance, resident</td>
+                        <td>transformation, demolition_disposition, self_sufficiency</td>
+                    </tr>
+                </tbody>
+            </table>
 
-                <tr>
-                    <td>3</td>
-                    <td>Eviction, Disaster Relief, & Tenant Protections</td>
-                    <td>state, assistance, housing, fund, tenant</td>
-                    <td>illegal_eviction, court_ordered, major_disaster</td>
-                </tr>
+            <figure>
+                <img src="assets/topic_correlation_heatmap.png" alt="Topic Correlation Heatmap">
+                <figcaption>Figure 1. Topic Correlation Heatmap</figcaption>
+            </figure>
 
-                <tr>
-                    <td>4</td>
-                    <td>Community Grants & Recreation Investments</td>
-                    <td>grant, community, program, development</td>
-                    <td>park_recreation, recreation, comprehensive_regional</td>
-                </tr>
+            <p>A few trends emerge from this correlation analysis:</p>
+            <ul>
+                <li>Correlation scores are quite small in magnitude. This can indicate well-defined and distinct topics.</li>
+                <li>The strongest correlation is negative—indicating very different topics—between Topics 1 and 9 (Homelessness & Mortgages).</li>
+                <li>Positive correlations exist between Topics 9 and 10 (Mortgages and Neighborhood Development) and Topics 5 and 6 (Housing Safety).</li>
+            </ul>
+        </section>
 
-                <tr>
-                    <td>5</td>
-                    <td>Lead Hazards & Healthy Housing</td>
-                    <td>housing, lead, health, program, property</td>
-                    <td>pipe_hazard, hazard, cdbg_plus</td>
-                </tr>
+        <section id="Comparison">
+            <h2>Comparing LDA and CTM: Is There a Winner?</h2>
 
-                <tr>
-                    <td>6</td>
-                    <td>Housing Safety Standards & Inspections</td>
-                    <td>housing, unit, dwelling, assistance</td>
-                    <td>temperature_sensor, qualifying_smoke, zoning_framework</td>
-                </tr>
+            <p>This analysis has several takeaways.</p>
 
-                <tr>
-                    <td>7</td>
-                    <td>Tax Credits, Income Rules, & Affordable Housing Finance</td>
-                    <td>housing, year, income, project, credit</td>
-                    <td>taxable, taxpayer, first_responder</td>
-                </tr>
+            <p>
+                The comparison of LDA and CTM validates the topics found in this corpus, indicating there are true patterns in congressional housing legislation. Additionally, the correlated topic model allows us to validate these topics by the magnitude of the correlations: small correlations mean distinct topics.
+            </p>
 
-                <tr>
-                    <td>8</td>
-                    <td>Mortgage & GSE/FHFA Oversight</td>
-                    <td>mortgage, federal, housing, enterprise</td>
-                    <td>ginnie_mae, fhfa, conservator_receiver</td>
-                </tr>
+            <p>
+                A CTM also allows us to identify potentially overlapping topics by highlighting where modest positive correlations occur—such as between safety and healthy housing provisions or between mortgages and GSE oversight. These linkages suggest areas of legislative bundling or shared policy framing that a standard LDA model, which assumes topic independence, cannot reveal.
+            </p>
 
-                <tr>
-                    <td>9</td>
-                    <td>Foreclosure & Loss Mitigation</td>
-                    <td>mortgage, loan, foreclosure, borrower</td>
-                    <td>servicer, forbearance, loss_mitigation</td>
-                </tr>
-
-                <tr>
-                    <td>10</td>
-                    <td>Public Housing Transformation & Resident Support</td>
-                    <td>housing, public, unit, assistance, resident</td>
-                    <td>transformation, demolition_disposition, self_sufficiency</td>
-                </tr>
-
-            </tbody>
-        </table>
-
-    
-        <iframe src="assets/ldavis_output/index.html" width="100%" height="880px"></iframe>
-
+            <p>
+                Further analysis on this corpus using metadata may reveal how these patterns relate to legislative outcomes—what bills perform well, who they are sponsored by, and what other characteristics they might have.
+            </p>
+        </section>
     </div>
-    
 </body>
 
 </html>
